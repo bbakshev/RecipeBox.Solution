@@ -23,6 +23,16 @@
   @Html.LabelFor(model => model.Instructions)
   @Html.TextAreaFor(model => model.Instructions)
 
+
+@Html.LabelFor(model => model.Rating)
+<input type="radio" id="rating" name="Rating" value="1" checked>
+<label for="rating">1</label>
+
+<label>@Html.RadioButtonFor(model => model.Rating,2) 2</label>
+<label>@Html.RadioButtonFor(model => model.Rating,3) 3</label>
+<label>@Html.RadioButtonFor(model => model.Rating,4) 4</label>
+<label>@Html.RadioButtonFor(model => model.Rating,5) 5 </label>
+
   <input type="submit" value="Add new recipe" class="btn btn-primary" />
 }
 <p>@Html.ActionLink("Show all recipes", "Index")</p>

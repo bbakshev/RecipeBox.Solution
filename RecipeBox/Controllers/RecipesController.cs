@@ -41,7 +41,7 @@ namespace RecipeBox.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Recipe recipe)
+    public async Task<ActionResult> Create(Recipe recipe, int rating)
     {
       if (!ModelState.IsValid)
       {
@@ -52,6 +52,7 @@ namespace RecipeBox.Controllers
         string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
         recipe.User = currentUser;
+        recipe.Rating = rating;
         _db.Recipes.Add(recipe);
         _db.SaveChanges();
         return RedirectToAction("Index");

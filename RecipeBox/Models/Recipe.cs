@@ -12,6 +12,7 @@ namespace RecipeBox.Models
     public string Ingredients { get; set; }
     [Required(ErrorMessage = "Please add the instructions!")]
     public string Instructions { get; set; }
+    public int Rating { get; set; }
     public List<TagRecipe> JoinEntities { get; }
     public ApplicationUser User { get; set; }
   }

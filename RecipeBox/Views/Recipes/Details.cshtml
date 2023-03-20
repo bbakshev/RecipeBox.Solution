@@ -17,12 +17,12 @@ else
 {
   <h4>This recipe has the following tags:</h4>
   <ul>
-    @foreach(ItemTag join in Model.JoinEntities)
+    @foreach(TagRecipe join in Model.JoinEntities)
     {
       <li>Tag: @join.Tag.Title</li>
       @using (Html.BeginForm("DeleteJoin", "Items"))
       {
-        @Html.Hidden("joinId", @join.ItemTagId)
+        @Html.Hidden("joinId", @join.TagRecipeId)
         <input type="submit" value="Delete"/>
       }
     }
@@ -30,6 +30,6 @@ else
 }
 
 <p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Item or Category", "Edit", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Add a Tag", "AddTag", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p>
+<p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
+<p>@Html.ActionLink("Add a Tag", "AddTag", new { id = Model.RecipeId })</p>
+<p>@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>

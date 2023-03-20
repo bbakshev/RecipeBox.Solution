@@ -12,12 +12,15 @@
 } 
 else
 {
-  <ul>
-    @foreach (Recipe recipe in Model)
-    {
-      <li>@Html.ActionLink($"{recipe.Description}", "Details", new { id = recipe.RecipeId }) | @recipe.Tag.Title</li>
-    }
-  </ul>
+    @foreach(Recipe recipe in Model)
+  {
+    <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId }) | 
+      @foreach(TagRecipe join in recipe.JoinEntities)
+      {
+        @Html.ActionLink($"{join.Tag.Title}", "Details", "Tags", new {id = join.Tag.TagId} )
+      }
+    </li>
+  }
 }
 
 <p>@Html.ActionLink("Add new recipe", "Create")</p>

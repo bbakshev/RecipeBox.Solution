@@ -38,15 +38,22 @@ namespace RecipeBox.Controllers
     [HttpPost]
     public ActionResult Create(Tag tag)
     {
-      _db.Tags.Add(tag);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        return RedirectToAction("Create");
+      }
+      else
+      {
+        _db.Tags.Add(tag);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult AddRecipe(int id)
     {
       Tag thisTag = _db.Tags.FirstOrDefault(tags => tags.TagId == id);
-      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Description");
+      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Name");
       return View(thisTag);
     }
 

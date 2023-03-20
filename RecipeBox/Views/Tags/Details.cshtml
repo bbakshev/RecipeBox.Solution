@@ -19,7 +19,7 @@ else
   <ul>
   @foreach(TagRecipe join in Model.JoinEntities)
   {
-    <li>@join.Item.Description</li>
+    <li>@join.Recipe.Name</li>
     @using (Html.BeginForm("DeleteJoin", "Tags"))
     {
       @Html.Hidden("joinId", @join.TagRecipeId)

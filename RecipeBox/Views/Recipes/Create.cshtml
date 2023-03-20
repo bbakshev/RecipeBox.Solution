@@ -7,12 +7,21 @@
 
 <h4>Add a new recipe</h4>
 
-<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 
 @using (Html.BeginForm())
 {
+  <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
+
+<p>@Html.ValidationMessageFor(model => model.Ingredients, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+  @Html.LabelFor(model => model.Ingredients)
+  @Html.TextAreaFor(model => model.Ingredients)
+
+<p>@Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+  @Html.LabelFor(model => model.Instructions)
+  @Html.TextAreaFor(model => model.Instructions)
 
   <input type="submit" value="Add new recipe" class="btn btn-primary" />
 }

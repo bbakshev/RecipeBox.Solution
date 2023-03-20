@@ -40,7 +40,7 @@ namespace RecipeBox.Controllers
     {
       if (!ModelState.IsValid)
       {
-        return RedirectToAction("Create");
+        return View(tag);
       }
       else
       {

@@ -122,12 +122,11 @@ main {
   color: #483d8b;
 }
 
-    
-    .recipe-card p {
-    text-align: center;
-    margin-bottom: 1em;
-    color: #777;
-    }
+.recipe-card p {
+  text-align: center;
+  margin-bottom: 1em;
+  color: #777;
+}
 
 .rating {
   display: flex;
@@ -168,9 +167,22 @@ main {
   border: 1px solid rgb(215, 215, 231);
   border-radius: 8px;
   margin: 0 5px;
-  }
+}
   
-  .nav-item:hover {
+.nav-item:hover {
   background-color:khaki;
   border-radius:5px;
-  }
+}
+
+.nav-item {
+  text-align:center;
+}
+
+nav > * {
+  border: 2px black solid;
+}
+#evergreenNavbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -12,15 +12,9 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg" style="background-color: #7c9b5c;">
-    
-      <a class="navbar-brand" href="/"></a>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
       
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" id="evergreenNavbar">
           
           <li class="nav-item active">
             <a class="nav-link" href="/" style="color:#4c463d;">Home</a>
@@ -33,19 +27,19 @@
           <li class="nav-item">
             <a class="nav-link" href="/Tags" style="color:  #4c463d;">Tags</a>
           </li>
-        </ul>
-      </div>
+      
       @using (Html.BeginForm("Search","Recipes"))
       {
-        <div class="input-group">
+      <li class="nav-item">
           <div class="form-outline">
             @Html.TextBox("userSearch")
           </div>
           <input type="submit" value="Search">
           <i class="fas fa-search"></i>
-        </div>
+      </li>
       } 
-    
+        </ul>
+      </div>
     </nav>
     @RenderBody()
   </body>

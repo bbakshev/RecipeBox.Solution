@@ -29,6 +29,7 @@ namespace RecipeBox.Controllers
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       List<Recipe> userRecipe = _db.Recipes
                           .Where(entry => entry.User.Id == currentUser.Id)
+                          .OrderByDescending(recipe => recipe.Rating)
                           .Include(recipe => recipe.JoinEntities)
                           .ThenInclude(join => join.Tag)
                           .ToList();
@@ -126,5 +127,19 @@ namespace RecipeBox.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     } 
+
+    [HttpPost]
+    public async Task<ActionResult> Search(string userSearch)
+    {
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Recipe> userRecipe = _db.Recipes
+                          .Where(entry => entry.User.Id == currentUser.Id)
+                          .Where(recipe => recipe.Name.ToLower().Contains(userSearch.ToLower()))
+                          .Include(recipe => recipe.JoinEntities)
+                          .ThenInclude(join => join.Tag)
+                          .ToList();
+      return View(userRecipe);
+    }
   }
 }

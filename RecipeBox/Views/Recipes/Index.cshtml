@@ -17,7 +17,7 @@ else
     <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId }) | 
       @foreach(TagRecipe join in recipe.JoinEntities)
       {
-        @Html.ActionLink($"{join.Tag.Title}", "Details", "Tags", new {id = join.Tag.TagId} )
+        @Html.ActionLink($"{join.Tag.Title} ", "Details", "Tags", new {id = join.Tag.TagId} )
       }
     </li>
   }

@@ -10,7 +10,12 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
 <h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
-<h3>@Html.DisplayNameFor(model => model.Rating): @Html.DisplayFor(model => model.Rating)</h3>  
+<h3>@Html.DisplayNameFor(model => model.Rating): 
+  @for (int i=Model.Rating;i>0;i--)
+  {
+    <span>⭐</span>
+  }
+</h3>
 
 @if(@Model.JoinEntities.Count == 0)
 {

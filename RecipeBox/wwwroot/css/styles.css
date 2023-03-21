@@ -11,7 +11,7 @@ body {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   font-size: 16px;
   color: #4b0082;
-  background-color: #fddc5c;
+  background-color: #fae79a;
   padding: 1rem;
 }
 
@@ -53,10 +53,9 @@ ol {
   margin: 1em 0;
 }
 
-/* Header */
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; 
   align-items: center;
   padding: 1em;
   background-color: #ee82ee;
@@ -71,6 +70,7 @@ header {
 
 nav {
   display: flex;
+  align-items: center;
 }
 
 nav a {
@@ -164,9 +164,9 @@ main {
 }
 
 .navbar-nav > li {
-  border: 1px solid rgb(215, 215, 231);
   border-radius: 8px;
   margin: 0 5px;
+  font-weight: 600;
 }
   
 .nav-item:hover {
@@ -174,14 +174,19 @@ main {
   border-radius:5px;
 }
 
-.nav-item {
-  text-align:center;
+#evergreenNavbar {
+  display: flex;
+  justify-content: space-between;
 }
 
-
-
 #evergreenNavbar > * {
+  margin: 1em;
+}
+
+/* this might need to be changed (below) */
+nav.navbar {
   display: flex;
-  align-items: space-around;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Added this line */
 }

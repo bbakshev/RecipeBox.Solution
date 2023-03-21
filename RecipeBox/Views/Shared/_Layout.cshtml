@@ -11,9 +11,8 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #7c9b5c;">
-        <ul class="navbar-nav" id="evergreenNavbar">
-          
+    <nav id="evergreenNavbar" class="navbar navbar-expand-lg" style="background-color: #7c9b5c;">
+        <ul class="navbar-nav" >
           <li class="nav-item active">
             <a class="nav-link" href="/" style="color:#4c463d;">Home</a>
           </li>
@@ -25,15 +24,17 @@
           <li class="nav-item">
             <a class="nav-link" href="/Tags" style="color:  #4c463d;">Tags</a>
           </li>
-      
-          @using (Html.BeginForm("Search","Recipes"))
-          {
-            <div class="form-outline">
-              @Html.TextBox("userSearch")
-              <input type="submit" value="Search" />
-            </div>
-          } 
+            <li class="nav-item">
+            <a class="nav-link" href="/Recipes/TopRecipe" style="color:  #4c463d;">Top Rated Recipes</a>
+          </li>
         </ul>
+        @using (Html.BeginForm("Search","Recipes"))
+        {
+          <div class="form-outline">
+            @Html.TextBox("userSearch")
+            <input type="submit" value="Search" />
+          </div>
+        } 
     </nav>
     @RenderBody()
   </body>

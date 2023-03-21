@@ -22,18 +22,17 @@ namespace RecipeBox.Controllers
       [HttpGet("/")]
       public async Task<ActionResult> Index()
       {
-        Dictionary<string,object[]> model = new Dictionary<string, object[]>();
         string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
         
         if (currentUser != null)
         {
-          Recipe[] recipes = _db.Recipes
+          List<Recipe> recipes = _db.Recipes
                       .Where(entry => entry.User.Id == currentUser.Id)
-                      .ToArray();
-          model.Add("recipes", recipes);
+                      .ToList();
+          return View(recipes);
         }
-        return View(model);
+          return View();
       }
     }
 }

@@ -11,12 +11,12 @@
 @if (User.Identity.IsAuthenticated)
 {
   <h4>Recipes for @User.Identity.Name</h4>
-  @if (Model["recipes"].Length == 0)
+  @if (Model.Count == 0)
   {
     <p>No recipes have been added yet!</p>
   } 
   <ul>
-    @foreach (Recipe recipe in Model["recipes"])
+    @foreach (Recipe recipe in Model)
     {
       <li>@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId})</li>
     }

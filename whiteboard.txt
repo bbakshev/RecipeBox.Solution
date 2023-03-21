@@ -1,5 +1,4 @@
-1. search bar
-2. drop down bar to refine search
+1. drop down bar to refine search
 
 public enum ItemTypes
 {

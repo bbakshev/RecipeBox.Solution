@@ -148,5 +148,14 @@ namespace RecipeBox.Controllers
         return View(userRecipe);
       }
     }
+    public ActionResult TopRecipe()
+    {
+      List<Recipe> topRecipe = _db.Recipes
+                          .Where(recipe => recipe.Rating == 5)
+                          .Include(recipe => recipe.JoinEntities)
+                          .ThenInclude(join => join.Tag)
+                          .ToList();
+      return View(topRecipe);
+    }
   }
 }

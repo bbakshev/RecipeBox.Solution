@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg" style="background-color: #7c9b5c;">
-      
-      <div class="collapse navbar-collapse" id="navbarNav">
+    <nav class="navbar navbar-expand-lg" style="background-color: #7c9b5c;">
         <ul class="navbar-nav" id="evergreenNavbar">
           
           <li class="nav-item active">
@@ -28,18 +26,14 @@
             <a class="nav-link" href="/Tags" style="color:  #4c463d;">Tags</a>
           </li>
       
-      @using (Html.BeginForm("Search","Recipes"))
-      {
-      <li class="nav-item">
-          <div class="form-outline">
-            @Html.TextBox("userSearch")
-          </div>
-          <input type="submit" value="Search">
-          <i class="fas fa-search"></i>
-      </li>
-      } 
+          @using (Html.BeginForm("Search","Recipes"))
+          {
+            <div class="form-outline">
+              @Html.TextBox("userSearch")
+              <input type="submit" value="Search" />
+            </div>
+          } 
         </ul>
-      </div>
     </nav>
     @RenderBody()
   </body>

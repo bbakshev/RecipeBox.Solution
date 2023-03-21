@@ -131,15 +131,22 @@ namespace RecipeBox.Controllers
     [HttpPost]
     public async Task<ActionResult> Search(string userSearch)
     {
-      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      List<Recipe> userRecipe = _db.Recipes
-                          .Where(entry => entry.User.Id == currentUser.Id)
-                          .Where(recipe => recipe.Name.ToLower().Contains(userSearch.ToLower()))
-                          .Include(recipe => recipe.JoinEntities)
-                          .ThenInclude(join => join.Tag)
-                          .ToList();
-      return View(userRecipe);
+      if (userSearch == null)
+      {
+        return RedirectToAction("Index");
+      }
+      else
+      {
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        List<Recipe> userRecipe = _db.Recipes
+                            .Where(entry => entry.User.Id == currentUser.Id)
+                            .Where(recipe => recipe.Name.ToLower().Contains(userSearch.ToLower()) || recipe.Ingredients.ToLower().Contains(userSearch.ToLower()))
+                            .Include(recipe => recipe.JoinEntities)
+                            .ThenInclude(join => join.Tag)
+                            .ToList();
+        return View(userRecipe);
+      }
     }
   }
 }

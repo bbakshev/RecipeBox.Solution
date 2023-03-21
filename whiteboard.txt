@@ -1,1 +1,12 @@
 1. search bar
+2. drop down bar to refine search
+
+public enum ItemTypes
+{
+    Movie = 1,
+    Game = 2,
+    Book = 3
+}
+
+
+ViewBag.Something = new SelectList()

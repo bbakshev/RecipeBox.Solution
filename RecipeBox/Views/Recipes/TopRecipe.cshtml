@@ -4,9 +4,17 @@
 
 @using RecipeBox.Models;
 
+<div class="recipeIndex">
+
 <h1>Top Rated Recipes ⭐</h1>
 
 @foreach(Recipe recipe in Model)
-  {
-    <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
-  }
+{
+  <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
+}
+</div>
+<div class="recipeLayout">
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Add new recipe", "Create")</span>
+</div>
+</div>

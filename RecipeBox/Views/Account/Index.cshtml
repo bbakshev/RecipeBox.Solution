@@ -2,19 +2,21 @@
   Layout = "_Layout";
 }
 
-<h2>Authentication with Identity</h2>
-<hr />
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Hello @ViewBag.FirstName!</p>
+  <h2>Hello @ViewBag.FirstName!</h2>
   @using (Html.BeginForm("LogOff", "Account"))
   {
     <input type="submit" class="btn btn-primary" value="Log out" />
   }
+  <div class="recipe-links">
+    <span>@Html.ActionLink(".Home", "Index", "Home")</span>
+  </div>
 }
 else
 {
-  <p>@Html.ActionLink("Register", "Register")</p>
-  <p>@Html.ActionLink("Log in", "Login")</p>
+  <div class="recipe-links">
+    <span>@Html.ActionLink(".Register", "Register")</span>
+    <span>@Html.ActionLink(".Log in", "Login")</span>
+  </div>
 }
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

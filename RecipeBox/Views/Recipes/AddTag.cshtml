@@ -4,19 +4,20 @@
 
 @model RecipeBox.Models.Recipe
 
-<h2>Add a tag</h2>
+<h2>Add a tag to @Html.DisplayFor(model => model.Name)</h2>
 
-<h4>Add a tag to this item: @Html.DisplayFor(model => model.Name)</h4>
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.RecipeId)
 
-    @Html.Label("Select tag")
+    @Html.Label("Select tag:")
     @Html.DropDownList("TagId")
-
+    <br><br>
     <input type="submit" value="Save" />
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Back to list", "Index")</span>
+</div>

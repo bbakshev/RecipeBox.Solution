@@ -4,9 +4,7 @@
 
 @model RecipeBox.Models.Recipe
 
-<h2>Edit</h2>
-
-<h4>Edit this recipe: @Html.DisplayFor(model => model.Name)</h4>
+<h2>Edit the recipe for @Html.DisplayFor(model => model.Name)</h2>
 
 @using (Html.BeginForm())
 {
@@ -23,8 +21,10 @@
   <p>@Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
   @Html.LabelFor(model => model.Instructions)
   @Html.TextAreaFor(model => model.Instructions)
-
+  <br><br>
   <input type="submit" value="Save" />
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Back to list", "Index")</span>
+</div>

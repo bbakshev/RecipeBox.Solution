@@ -13,3 +13,5 @@ ViewBag.Something = new SelectList()
 2. add a forgot password functionality 
 
 3. Implement an API call within the app (add it in the search)
+
+4. Add bullet points to details page

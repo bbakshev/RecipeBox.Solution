@@ -12,7 +12,7 @@
 } 
 else
 {
-  <h3>Search result for Recipes</h3>
+  <h3>Recipe search results</h3>
     @foreach(Recipe recipe in Model)
   {
     <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })
@@ -20,5 +20,7 @@ else
   }
 }
 
-<p>@Html.ActionLink("Add new recipe", "Create")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Add new recipe", "Create")</span>
+  <span>@Html.ActionLink(".Home", "Index", "Home")</span>
+</div>

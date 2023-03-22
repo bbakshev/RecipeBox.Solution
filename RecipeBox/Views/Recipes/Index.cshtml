@@ -4,6 +4,7 @@
 
 @using RecipeBox.Models;
 
+<div class="recipeIndex">
 <h1 class="recipe-list">Recipes for @ViewBag.FirstName</h1>
 
 @if (@Model.Count == 0)
@@ -22,6 +23,10 @@ else
     </li>
   }
 }
-
-<p>@Html.ActionLink("Add new recipe", "Create")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
+<div class="recipeLayout">
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Add new recipe", "Create")</span>
+  <span>@Html.ActionLink(".Home", "Index", "Home")</span>
+</div>
+</div>

@@ -5,9 +5,7 @@
 @using RecipeBox.Models
 @model RecipeBox.Models.Tag
 
-<h2>Tag Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h3>
+<h2>@Html.DisplayFor(model => model.Title) Details</h2>
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -15,7 +13,7 @@
 }
 else
 {
-  <h4>Recipes the tag belongs to:</h4>
+  <h4>Recipes that @Html.DisplayFor(model => model.Title) belongs to:</h4>
   <ul>
   @foreach(TagRecipe join in Model.JoinEntities)
   {
@@ -23,13 +21,16 @@ else
     @using (Html.BeginForm("DeleteJoin", "Tags"))
     {
       @Html.Hidden("joinId", @join.TagRecipeId)
-      <input type="submit" value="Delete"/>
+      <input type="submit" value="Remove" id="tag-button"/>
+      <br><br>
     }
   }
   </ul>
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Add a Recipe", "AddRecipe", new { id = Model.TagId })</p>
-<p>@Html.ActionLink("Edit Tag", "Edit", new { id = Model.TagId })</p>
-<p>@Html.ActionLink("Delete Tag", "Delete", new { id = Model.TagId })</p>
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Back to list", "Index")</span>
+  <span>@Html.ActionLink(".Add a Recipe", "AddRecipe", new { id = Model.TagId })</span>
+  <span>@Html.ActionLink(".Edit Tag", "Edit", new { id = Model.TagId })</span>
+  <span>@Html.ActionLink(".Delete Tag", "Delete", new { id = Model.TagId })</span>
+</div>

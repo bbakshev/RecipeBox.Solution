@@ -9,9 +9,12 @@
 @using (Html.BeginForm())
 {
   <p>@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", @style = "font-weight: 600; color:red;" })</p>
-    @Html.LabelFor(model => model.Title)
-    @Html.TextBoxFor(model => model.Title)
-
-    <input type="submit" value="Add new tag" class="btn btn-default" />
+  @Html.Label("Tag:")
+  @Html.TextBoxFor(model => model.Title)
+  <br><br>
+  <input type="submit" value="Add new tag" class="btn btn-default" />
 }
-<p>@Html.ActionLink("Show all tags", "Index")</p>
+
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Show all tags", "Index")</span>
+</div>

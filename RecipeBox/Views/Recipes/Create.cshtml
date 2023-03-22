@@ -4,10 +4,7 @@
 
 @model RecipeBox.Models.Recipe
 
-
 <h4>Add a new recipe</h4>
-
-
 
 @using (Html.BeginForm())
 {
@@ -15,24 +12,27 @@
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
 
-<p>@Html.ValidationMessageFor(model => model.Ingredients, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+  <p>@Html.ValidationMessageFor(model => model.Ingredients, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
   @Html.LabelFor(model => model.Ingredients)
   @Html.TextAreaFor(model => model.Ingredients)
 
-<p>@Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+  <p>@Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
   @Html.LabelFor(model => model.Instructions)
   @Html.TextAreaFor(model => model.Instructions)
 
-<br>
-@Html.LabelFor(model => model.Rating)<br>
-<input type="radio" id="rating" name="Rating" value="1" checked>
-<label for="rating">⭐</label><br>
+  <br><br>
+  @Html.LabelFor(model => model.Rating)<br>
+  <input type="radio" id="rating" name="Rating" value="1" checked>
+  <label for="rating">⭐</label><br>
 
-<label>@Html.RadioButtonFor(model => model.Rating,2) ⭐⭐</label><br>
-<label>@Html.RadioButtonFor(model => model.Rating,3) ⭐⭐⭐</label><br>
-<label>@Html.RadioButtonFor(model => model.Rating,4) ⭐⭐⭐⭐</label><br>
-<label>@Html.RadioButtonFor(model => model.Rating,5) ⭐⭐⭐⭐⭐ </label><br>
-
+  <label>@Html.RadioButtonFor(model => model.Rating,2) ⭐⭐</label><br>
+  <label>@Html.RadioButtonFor(model => model.Rating,3) ⭐⭐⭐</label><br>
+  <label>@Html.RadioButtonFor(model => model.Rating,4) ⭐⭐⭐⭐</label><br>
+  <label>@Html.RadioButtonFor(model => model.Rating,5) ⭐⭐⭐⭐⭐ </label><br>
+  <br>
   <input type="submit" value="Add new recipe" class="btn btn-primary" />
 }
-<p>@Html.ActionLink("Show all recipes", "Index")</p>
+
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Show all recipes", "Index")</span>
+</div>

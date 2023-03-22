@@ -6,16 +6,18 @@
 
 <h2>Add a recipe</h2>
 
-<h4>Add a recipe to this tag: @Html.DisplayFor(model => model.Title)</h4>
+<h4>Add a recipe to @Html.DisplayFor(model => model.Title)</h4>
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.TagId)
+  @Html.HiddenFor(model => model.TagId)
 
-    @Html.Label("Select recipe:")
-    @Html.DropDownList("RecipeId")
-
-    <input type="submit" value="Save" />
+  @Html.Label("Select recipe:")
+  @Html.DropDownList("RecipeId")
+  <br><br>
+  <input type="submit" value="Save" />
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Back to list", "Index")</span>
+</div>

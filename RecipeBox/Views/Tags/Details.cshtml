@@ -9,28 +9,28 @@
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This tag does not belong to any recipes</p>
+  <p>@Html.DisplayFor(model => model.Title) does not belong to any recipes</p>
 }
 else
 {
   <h4>Recipes that @Html.DisplayFor(model => model.Title) belongs to:</h4>
   <ul>
-  @foreach(TagRecipe join in Model.JoinEntities)
-  {
-    <li>@join.Recipe.Name</li>
-    @using (Html.BeginForm("DeleteJoin", "Tags"))
+    @foreach(TagRecipe join in Model.JoinEntities)
     {
-      @Html.Hidden("joinId", @join.TagRecipeId)
-      <input type="submit" value="Remove" id="tag-button"/>
-      <br><br>
+      <li>@join.Recipe.Name</li>
+      @using (Html.BeginForm("DeleteJoin", "Tags"))
+      {
+        @Html.Hidden("joinId", @join.TagRecipeId)
+        <input type="submit" value="Remove" id="tag-button"/>
+        <br><br>
+      }
     }
-  }
   </ul>
 }
 
 <div class="recipe-links">
   <span>@Html.ActionLink(".Back to list", "Index")</span>
-  <span>@Html.ActionLink(".Add a Recipe", "AddRecipe", new { id = Model.TagId })</span>
+  <span>@Html.ActionLink(".Add a Recipe to Tag", "AddRecipe", new { id = Model.TagId })</span>
   <span>@Html.ActionLink(".Edit Tag", "Edit", new { id = Model.TagId })</span>
   <span>@Html.ActionLink(".Delete Tag", "Delete", new { id = Model.TagId })</span>
 </div>

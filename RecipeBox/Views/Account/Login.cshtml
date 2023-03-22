@@ -18,11 +18,11 @@
 {
   @Html.LabelFor(m => m.Email)
   @Html.TextBoxFor(m => m.Email)
-
+  <br><br>
   @Html.LabelFor(m => m.Password)
   @Html.EditorFor(m => m.Password)
-
-  <input type="submit" value="Log in" />
+  <br><br>
+  <input type="submit" value="Log in" id="green-button"/>
 }
 <div class="recipe-links">
   <span>@Html.ActionLink(".Register for an account", "Register")</span>

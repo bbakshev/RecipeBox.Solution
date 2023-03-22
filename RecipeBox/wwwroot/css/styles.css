@@ -3,13 +3,12 @@
 :root {
   font-family: 'Playfair Display', serif;
   --gutter: 1em;
-  --title-font-size: 4em;
-  --med-font-size: 3em;
+  --lg-font-size: 3em;
   --sm-font-size: 1.4em;
   --xs-font-size: 1em;
   --title-weight: 800;
   --med-weight: 700;
-  --detail-weight: 500;
+  --detail-weight: 400;
   --link-color: black;
   --main-text-color: black;
   --hover-color: #7C9B5C;
@@ -58,7 +57,7 @@ nav {
 
 .nav-button:hover {
   transform: translateY(-5px);
-  text-shadow: -2px 6px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: -2px 6px 5px rgba(0, 0, 0, 0.3);
   z-index: 2;
 }
 
@@ -67,10 +66,21 @@ nav {
   flex-direction: column;
   align-items: stretch;
   max-width: 70vw;
-  max-height: 90vh;
+  height: 75vh;
   margin: 4vw 0 0 10vw;
   padding: 0 0 0 5vw;
 }
+
+.recipeIndexLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  max-width: 70vw;
+  height: 75vh;
+  margin: 4vw 0 0 10vw;
+  padding: 0 0 0 5vw;
+  }
 
 .recipeLayout > * {
   padding: 0;
@@ -82,8 +92,21 @@ nav {
   opacity: initial;
 }
 
+.instructions, .ingredients {
+  font-weight: var(--detail-weight);
+  margin: 2vh 2vh 2vh 5vh;
+}
+
+.main-title {
+  font-size: var(--lg-font-size);
+}
+
 .rating {
   font-size: 1rem;
+}
+
+#green-button {
+  background-color:var(--hover-color);
 }
 
 #tag-button {
@@ -124,17 +147,5 @@ nav {
   font-weight: var(--detail-weight);
 }
 
-.recipeIndex {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  max-width: 70vw;
-  max-height: 90vh;
-  margin: 4vw 0 0 0;
-  padding: 0 0 0 5vw;
-  text-align: center;
-  }
 
-  li {
-    list-style: none;
-  }
+  

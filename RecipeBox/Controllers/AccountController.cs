@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using System;
 
 namespace RecipeBox.Controllers
 {
@@ -15,7 +16,7 @@ namespace RecipeBox.Controllers
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RecipeBoxContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RecipeBoxContext db)
     {
       _userManager = userManager;
       _signInManager = signInManager;
@@ -27,9 +28,9 @@ namespace RecipeBox.Controllers
       string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       if (currentUser != null)
-        {
-          ViewBag.FirstName = currentUser.FirstName;
-        }
+      {
+        ViewBag.FirstName = currentUser.FirstName;
+      }
       return View();
     }
 
@@ -39,7 +40,7 @@ namespace RecipeBox.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Register (RegisterViewModel model)
+    public async Task<ActionResult> Register(RegisterViewModel model)
     {
       if (!ModelState.IsValid)
       {
@@ -64,7 +65,7 @@ namespace RecipeBox.Controllers
       }
     }
 
-        public ActionResult Login()
+    public ActionResult Login()
     {
       return View();
     }
@@ -96,6 +97,23 @@ namespace RecipeBox.Controllers
     {
       await _signInManager.SignOutAsync();
       return RedirectToAction("Index", "Home");
+    }
+
+    public async Task<ActionResult> Edit()
+    {
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      return View(currentUser);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Edit(string FirstName)
+    {
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser userToUpdate = await _userManager.FindByIdAsync(userId);
+      userToUpdate.FirstName = FirstName;
+      IdentityResult result = await _userManager.UpdateAsync(userToUpdate);
+      return RedirectToAction("Index");
     }
   }
 }

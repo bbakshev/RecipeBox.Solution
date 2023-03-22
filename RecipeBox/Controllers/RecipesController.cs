@@ -120,6 +120,7 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Details", new { id = recipe.RecipeId });
     }   
 
+    [Authorize]
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {

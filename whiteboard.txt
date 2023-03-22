@@ -7,7 +7,6 @@ public enum ItemTypes
     Book = 3
 }
 
-
 ViewBag.Something = new SelectList()
 
 2. add a forgot password functionality 

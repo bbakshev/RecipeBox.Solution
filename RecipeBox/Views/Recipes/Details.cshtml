@@ -35,21 +35,20 @@
       {
         <div class="tags">
           @join.Tag.Title
-      @using (Html.BeginForm("DeleteJoin", "Recipes"))
-      {
-        @Html.Hidden("joinId", @join.TagRecipeId)
-        <input type="submit" id="tag-button" value="Delete"/>
-
-      }
-        </div>
+        @using (Html.BeginForm("DeleteJoin", "Recipes"))
+        {
+          @Html.Hidden("joinId", @join.TagRecipeId)
+          <input type="submit" id="tag-button" value="Delete"/>
+        }
+      </div>
       }
     </div>
   }
 
-<div class="recipe-links">
-  <span>@Html.ActionLink(".Back to list", "Index")</span>
-  <span>@Html.ActionLink(".Edit Recipe", "Edit", new { id = Model.RecipeId })</span>
-  <span>@Html.ActionLink(".Add a Tag", "AddTag", new { id = Model.RecipeId })</span>
-  <span>@Html.ActionLink(".Delete Recipe", "Delete", new { id = Model.RecipeId })</span>
-</div>
+  <div class="recipe-links">
+    <span>@Html.ActionLink(".Back to list", "Index")</span>
+    <span>@Html.ActionLink(".Edit Recipe", "Edit", new { id = Model.RecipeId })</span>
+    <span>@Html.ActionLink(".Add a Tag to Recipe", "AddTag", new { id = Model.RecipeId })</span>
+    <span>@Html.ActionLink(".Delete Recipe", "Delete", new { id = Model.RecipeId })</span>
+  </div>
 </div>

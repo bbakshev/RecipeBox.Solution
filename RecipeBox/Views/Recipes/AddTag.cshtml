@@ -6,16 +6,14 @@
 
 <h2>Add a tag to @Html.DisplayFor(model => model.Name)</h2>
 
-<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
-
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.RecipeId)
+  @Html.HiddenFor(model => model.RecipeId)
 
-    @Html.Label("Select tag:")
-    @Html.DropDownList("TagId")
-    <br><br>
-    <input type="submit" value="Save" />
+  @Html.Label("Select tag: ")
+  @Html.DropDownList("TagId")
+  <br><br>
+  <input type="submit" value="Save" id="green-button"/>
 }
 
 <div class="recipe-links">

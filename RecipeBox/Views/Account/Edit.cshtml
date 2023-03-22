@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.ApplicationUser
+
+<h2>Edit @Html.DisplayFor(model => model.FirstName)</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.Label("Updated Name: ")
+  @Html.EditorFor(model => model.FirstName)
+  <br><br>
+  <input type="submit" value="Save" id="green-button"/>
+}
+
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Back Home", "Index")</span>
+</div>

@@ -7,10 +7,11 @@
   <h2>Hello @ViewBag.FirstName!</h2>
   @using (Html.BeginForm("LogOff", "Account"))
   {
-    <input type="submit" class="btn btn-primary" value="Log out" />
+    <input type="submit" id="green-button" value="Log out" />
   }
   <div class="recipe-links">
     <span>@Html.ActionLink(".Home", "Index", "Home")</span>
+    <span>@Html.ActionLink(".Edit Name", "Edit")</span>
   </div>
 }
 else

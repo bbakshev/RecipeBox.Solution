@@ -11,10 +11,10 @@
   @Html.HiddenFor(model => model.TagId)
 
   <p>@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", @style = "font-weight: 600; color:red;" })</p>
-  @Html.Label("Tag:")
+  @Html.Label("Tag: ")
   @Html.EditorFor(model => model.Title)
   <br><br>
-  <input type="submit" value="Save" />
+  <input type="submit" value="Save" id="green-button"/>
 }
 
 <div class="recipe-links">

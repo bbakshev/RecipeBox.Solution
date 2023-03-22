@@ -42,3 +42,64 @@ nav {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+.recipeLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 70vw;
+  max-height: 90vh;
+  margin: 4vw 0 0 10vw;
+  padding: 0 0 0 5vw;
+}
+
+.recipeLayout > * {
+  padding: 0;
+  margin: 0;
+}
+
+.name {
+  font-size: 2rem;
+  opacity: initial;
+}
+
+.rating {
+  font-size: 1rem;
+}
+
+#tag-button {
+  padding: .8px;
+  font-size: .6rem;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: oblique;
+}
+
+.tags > * {
+  padding: 0 1rem;
+}
+
+.tag-label {
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+.tags-container {
+  display: flex;
+  margin: .5em .8em .8em 1.4em;
+}
+
+.recipe-links {
+  display: flex;
+  margin: 10vw 0 0 0;
+}
+
+.recipe-links > * {
+  padding: 1em 1em 1em 0;
+}

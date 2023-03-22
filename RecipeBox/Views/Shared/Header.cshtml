@@ -1,0 +1,13 @@
+<nav class="navbar" style="background-color: #7c9b5c;">
+  <div class="button-div">
+    <a class="nav-button" href="/" style="color:#4c463d;">.Home</a>
+    <a class="nav-button" href="/Recipes" style="color:  #4c463d;" >.Recipes</a>
+    <a class="nav-button" href="/Tags" style="color:  #4c463d;">.Tags</a>
+    <a class="nav-button" href="/Recipes/TopRecipe" style="color:  #4c463d;">.Top Rated Recipes</a>
+  </div>
+  @using (Html.BeginForm("Search","Recipes"))
+  {
+    @Html.TextBox("userSearch")
+    <input type="submit" value="Search">
+  }
+</nav>

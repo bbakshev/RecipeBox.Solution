@@ -4,23 +4,18 @@
     <meta charset="utf-8">
     <title>this is your recipe box.</title>
     <link rel="stylesheet" href="~/css/styles.css">
+    <script src="~/js/scripts.js"></script>
   </head>
   <body>
-
-    <nav class="navbar" style="background-color: #7c9b5c;">
-      <div class="button-div">
-        <a class="nav-button" href="/" style="color:#4c463d;">.Home</a>
-        <a class="nav-button" href="/Recipes" style="color:  #4c463d;" >.Recipes</a>
-        <a class="nav-button" href="/Tags" style="color:  #4c463d;">.Tags</a>
-        <a class="nav-button" href="/Recipes/TopRecipe" style="color:  #4c463d;">.Top Rated Recipes</a>
-      </div>
-      @using (Html.BeginForm("Search","Recipes"))
-      {
-        @Html.TextBox("userSearch")
-        <input type="submit" value="Search">
-      } 
-    </nav>
-
-    @RenderBody()
+    @await Html.PartialAsync("Header")
+    <main class="obscured">
+      @RenderBody()
+    </main>
   </body>
 </html>
+
+<script>
+  window.addEventListener('load', async () => {
+    document.querySelector('main').classList.remove('obscured');
+  });
+</script>

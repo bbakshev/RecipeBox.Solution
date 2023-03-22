@@ -7,6 +7,17 @@
 
 <div class="recipeLayout">
 
+  <div id="delete-modal" class="modal obscured">
+    <div class="modal-message">
+      Are you sure you want to delete <span class="highlighted">@Model.Name?</span>
+    </div>
+    @using (Html.BeginForm("Delete", "Recipes", new { id = Model.RecipeId }))
+    {
+      <button type="submit" class="red">Delete</button>
+    }
+    <button onclick="hideModal('delete')">Cancel</button>
+  </div>
+
   <h2 class="name">@Html.DisplayFor(model => model.Name)
     <span class="rating">
         @for (int i=Model.Rating; i>0; i--)
@@ -49,6 +60,8 @@
     <span>@Html.ActionLink(".Back to list", "Index")</span>
     <span>@Html.ActionLink(".Edit Recipe", "Edit", new { id = Model.RecipeId })</span>
     <span>@Html.ActionLink(".Add a Tag to Recipe", "AddTag", new { id = Model.RecipeId })</span>
-    <span>@Html.ActionLink(".Delete Recipe", "Delete", new { id = Model.RecipeId })</span>
+
+    <button class="red" onclick="showModal('delete')">Delete Recipe</button>
+    
   </div>
 </div>

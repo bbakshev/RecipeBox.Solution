@@ -6,15 +6,15 @@
 
 <div class="recipeIndex">
 
-<h1>Top Rated Recipes ⭐</h1>
+  <h1 class="recipe-list">Top Rated Recipes ⭐</h1>
 
-@foreach(Recipe recipe in Model)
-{
-  <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
-}
+  @foreach(Recipe recipe in Model)
+  {
+    <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
+  }
 </div>
 <div class="recipeLayout">
-<div class="recipe-links">
-  <span>@Html.ActionLink(".Add new recipe", "Create")</span>
-</div>
+  <div class="recipe-links">
+    <span>@Html.ActionLink(".Add new recipe", "Create")</span>
+  </div>
 </div>

@@ -39,12 +39,27 @@ body {
   justify-content:space-between;
 }
 
+main {
+  margin: 1rem;
+  transition: all 300ms ease-out;
+  transition-delay: 100ms;
+}
+
+main.obscured {
+  opacity: 0;
+  transform: translateX(0.75rem); 
+}
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 7vw;
   padding: 0 var(--gutter);
+}
+
+button.red {
+  background-color: red;
 }
 
 .nav-button {
@@ -92,7 +107,7 @@ nav {
   opacity: initial;
 }
 
-.instructions, .ingredients {
+.recipe-list {
   font-weight: var(--detail-weight);
   margin: 2vh 2vh 2vh 5vh;
 }
@@ -145,6 +160,69 @@ nav {
 .recipe-links span > * {
   padding: 1em 1em 1em 0;
   font-weight: var(--detail-weight);
+}
+
+.modal {
+  position: absolute;
+  color: #aaa;
+	min-width: 20rem;
+	left: 50%;
+	top: 50%;
+	translate: -50% -50%;
+	border: var(--small-border);
+	box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.3);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: calc(var(--header-height) * 1.5) 1fr 1fr;
+	gap: 1.5rem;
+	text-align: center;
+	justify-items: center;
+	padding: calc(var(--header-height) / 2);
+	transition: scale 300ms ease, opacity 200ms ease;
+	z-index: 1;
+  padding: 2rem;
+}
+
+.modal > .modal-message {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.modal > .modal-message > .highlighted {
+  font-size: 1.5rem;
+  color: yellow;
+	font-weight: bold;
+}
+
+.modal button {
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 1rem 1.5rem;
+}
+
+.modal.obscured {
+	scale: 0.95;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.modal .button-area {
+	align-items: center;
+	justify-content: center;
+} 
+
+.modal#delete-modal {
+	background-color: rgb(76, 64, 64);
+}
+
+.modal.obscured {
+  opacity: 0;
+  scale: 0.9;
+  pointer-events: none;
 }
 
 

@@ -5,15 +5,13 @@
 @using RecipeBox.Models
 @model RecipeBox.Models.Tag
 
-<h2>@Html.DisplayFor(model => model.Title) Details</h2>
-
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>@Html.DisplayFor(model => model.Title) does not belong to any recipes</p>
+  <h4>@Html.DisplayFor(model => model.Title) does not belong to any recipes</h4>
 }
 else
 {
-  <h4>Recipes that @Html.DisplayFor(model => model.Title) belongs to:</h4>
+  <h2>Recipes that @Html.DisplayFor(model => model.Title) belongs to:</h2>
   <ul>
     @foreach(TagRecipe join in Model.JoinEntities)
     {

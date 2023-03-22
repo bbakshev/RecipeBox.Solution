@@ -16,7 +16,7 @@
     } 
       @foreach (Recipe recipe in Model)
       {
-        <h3 class="instructions">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId})</h3>
+        <h3 class="recipe-list">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId})</h3>
       }
   }
   else

@@ -9,3 +9,7 @@ public enum ItemTypes
 
 
 ViewBag.Something = new SelectList()
+
+2. add a forgot password functionality 
+
+3. Implement an API call within the app (add it in the search)

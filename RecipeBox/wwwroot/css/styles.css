@@ -9,7 +9,6 @@ html {
 /* Base styles */
 body {
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-size: 16px;
   color: #4b0082;
   background-color: #fae79a;
   padding: 1rem;
@@ -182,6 +181,44 @@ main {
 #evergreenNavbar > * {
   margin: 1em;
 }
+
+.recipeLayout {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+/* .title {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+
+.title > * {
+}
+
+.rating {
+  grid-column: 4 / 6;
+  grid-row: 1 / 2;
+  font-size: 2rem;
+}
+
+.ingredients {
+  grid-column: 1 / 3;
+  grid-row: 2 / 5;
+  font-size: 2rem;
+}
+
+.instructions {
+  grid-column: 3 / 6;
+  grid-row: 2 / 5;
+  font-size: 2rem;
+}
+
+.tags {
+  grid-column: 1 / 6;
+  grid-row: 5 / 6;
+  font-size: 2rem;
+} */
 
 /* this might need to be changed (below) */
 nav.navbar {

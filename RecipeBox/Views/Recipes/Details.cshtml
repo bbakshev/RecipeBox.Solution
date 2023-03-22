@@ -5,37 +5,46 @@
 @using RecipeBox.Models
 @model RecipeBox.Models.Recipe
 
-<h2>Recipe Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
-<h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
-<h3>@Html.DisplayNameFor(model => model.Rating): 
-  @for (int i=Model.Rating;i>0;i--)
-  {
-    <span>⭐</span>
-  }
-</h3>
-
-@if(@Model.JoinEntities.Count == 0)
-{
-  <p>This recipe does not have any tags yet!</p>
-}
-else
-{
-  <h4>This recipe has the following tags:</h4>
-  <ul>
-    @foreach(TagRecipe join in Model.JoinEntities)
-    {
-      <li>Tag: @join.Tag.Title</li>
-      @using (Html.BeginForm("DeleteJoin", "Recipes"))
+<div class="recipeLayout">
+  <div class="title">
+    @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+  </div>
+  <div class="rating">
+    @Html.DisplayNameFor(model => model.Rating): 
+      @for (int i=Model.Rating;i>0;i--)
       {
-        @Html.Hidden("joinId", @join.TagRecipeId)
-        <input type="submit" value="Delete"/>
+        <span>⭐</span>
       }
-    }
-  </ul>
-}
+  </div>
+
+  <div class="ingredients">
+    @Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)
+  </div>
+
+  <div class="instructions">
+    <h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
+  </div>
+
+  @if(@Model.JoinEntities.Count == 0)
+  {
+    <p>This recipe does not have any tags yet!</p>
+  }
+  else
+  {
+    <div class="tags">
+      <h4>This recipe has the following tags:</h4>
+        @foreach(TagRecipe join in Model.JoinEntities)
+        {
+          @join.Tag.Title
+          @using (Html.BeginForm("DeleteJoin", "Recipes"))
+          {
+            @Html.Hidden("joinId", @join.TagRecipeId)
+            <input type="submit" value="Delete"/>
+          }
+        }
+    </div>
+  }
+</div>
 
 <p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>

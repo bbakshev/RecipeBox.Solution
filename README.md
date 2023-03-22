@@ -1,6 +1,6 @@
 # Recipe Box
 
-#### By: Brishna Bakshev, Erin Timlin, Chris Johnedis
+#### By: Brishna Bakshev, Erin Timlin, Chris Johnedis, Luckie, John Diggins
 
 ## Technologies Used
 
@@ -61,4 +61,4 @@ Enjoy the site! If you have questions or suggestions for fixing the code, please
 
 [MIT](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt)
 
-Copyright (c) 2023 Brishna Bakshev, Erin Timlin, Chris Johnedis
+Copyright (c) 2023 Brishna Bakshev, Erin Timlin, Chris Johnedis, Luckie, John Diggins

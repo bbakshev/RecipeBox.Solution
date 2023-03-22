@@ -1,8 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
-using RecipeBox.Models;
-using System.Threading.Tasks;
 using RecipeBox.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using RecipeBox.Models;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace RecipeBox.Controllers
 {
@@ -19,8 +22,14 @@ namespace RecipeBox.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      if (currentUser != null)
+        {
+          ViewBag.FirstName = currentUser.FirstName;
+        }
       return View();
     }
 
@@ -38,7 +47,7 @@ namespace RecipeBox.Controllers
       }
       else
       {
-        ApplicationUser user = new ApplicationUser { UserName = model.Email };
+        ApplicationUser user = new ApplicationUser { UserName = model.Email, FirstName = model.FirstName };
         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {
@@ -86,7 +95,7 @@ namespace RecipeBox.Controllers
     public async Task<ActionResult> LogOff()
     {
       await _signInManager.SignOutAsync();
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", "Home");
     }
   }
 }

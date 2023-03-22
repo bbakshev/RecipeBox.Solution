@@ -6,47 +6,50 @@
 @model RecipeBox.Models.Recipe
 
 <div class="recipeLayout">
-  <div class="title">
-    @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
-  </div>
-  <div class="rating">
-    @Html.DisplayNameFor(model => model.Rating): 
-      @for (int i=Model.Rating;i>0;i--)
-      {
-        <span>⭐</span>
-      }
+
+  <h2 class="name">@Html.DisplayFor(model => model.Name)
+    <span class="rating">
+        @for (int i=Model.Rating;i>0;i--)
+        {
+          <span>⭐</span>
+        }
+    </span>
+  </h2>
+
+  <div>
+    <h3 class="ingredients">@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
+
+    <h3 class="instructions">@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3> 
   </div>
 
-  <div class="ingredients">
-    @Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)
-  </div>
-
-  <div class="instructions">
-    <h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
-  </div>
 
   @if(@Model.JoinEntities.Count == 0)
   {
-    <p>This recipe does not have any tags yet!</p>
+    <h4>This recipe does not have any tags yet</h4>
   }
   else
   {
-    <div class="tags">
-      <h4>This recipe has the following tags:</h4>
-        @foreach(TagRecipe join in Model.JoinEntities)
-        {
+  <h4 class="tag-label">This recipe has the following tags:</h4>
+    <div class="tags-container">
+      @foreach(TagRecipe join in Model.JoinEntities)
+      {
+        <div class="tags">
           @join.Tag.Title
-          @using (Html.BeginForm("DeleteJoin", "Recipes"))
-          {
-            @Html.Hidden("joinId", @join.TagRecipeId)
-            <input type="submit" value="Delete"/>
-          }
-        }
+      @using (Html.BeginForm("DeleteJoin", "Recipes"))
+      {
+        @Html.Hidden("joinId", @join.TagRecipeId)
+        <input type="submit" id="tag-button" value="Delete"/>
+
+      }
+        </div>
+      }
     </div>
   }
-</div>
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
-<p>@Html.ActionLink("Add a Tag", "AddTag", new { id = Model.RecipeId })</p>
-<p>@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>
+
+<div class="recipe-links">
+  <span>@Html.ActionLink(".Back to list", "Index")</span>
+  <span>@Html.ActionLink(".Edit Recipe", "Edit", new { id = Model.RecipeId })</span>
+  <span>@Html.ActionLink(".Add a Tag", "AddTag", new { id = Model.RecipeId })</span>
+  <span>@Html.ActionLink(".Delete Recipe", "Delete", new { id = Model.RecipeId })</span>
+</div>

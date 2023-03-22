@@ -27,6 +27,7 @@ namespace RecipeBox.Controllers
         
         if (currentUser != null)
         {
+          ViewBag.FirstName = currentUser.FirstName;
           List<Recipe> recipes = _db.Recipes
                       .Where(entry => entry.User.Id == currentUser.Id)
                       .ToList();

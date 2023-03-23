@@ -10,12 +10,12 @@ namespace RecipeBox.Controllers
   public class AdminController : Controller
   {
     private UserManager<ApplicationUser> _userManager;
-    private IPasswordHasher<ApplicationUser> passwordHasher;
+    // private IPasswordHasher<ApplicationUser> passwordHasher;
 
-    public AdminController(UserManager<ApplicationUser> usrMgr, IPasswordHasher<ApplicationUser> passwordHash)
+    public AdminController(UserManager<ApplicationUser> usrMgr)
     {
       _userManager = usrMgr;
-      passwordHasher = passwordHash;
+      // passwordHasher = passwordHash;
     }
 
     public IActionResult Index()
@@ -32,7 +32,8 @@ namespace RecipeBox.Controllers
       {
         ApplicationUser appUser = new ApplicationUser
         {
-          UserName = user.UserName,
+          UserName = user.Email,
+          FirstName = user.FirstName,
           Email = user.Email
         };
 
@@ -54,7 +55,7 @@ namespace RecipeBox.Controllers
     ApplicationUser userToUpdate = await _userManager.FindByIdAsync(id);
     var viewModel = new RegisterViewModel 
     {
-        UserName = userToUpdate.UserName,
+        FirstName = userToUpdate.FirstName,
         Email = userToUpdate.Email
     };
     return View(viewModel); 
@@ -71,10 +72,10 @@ public async Task<IActionResult> Update(string id, RegisterViewModel viewModel)
         else
             ModelState.AddModelError("", "Email cannot be empty");
 
-        if (!string.IsNullOrEmpty(viewModel.Password))
-            user.PasswordHash = passwordHasher.HashPassword(user, viewModel.Password);
-        else
-            ModelState.AddModelError("", "Password cannot be empty");
+        // // if (!string.IsNullOrEmpty(viewModel.Password))
+        // //     user.PasswordHash = passwordHasher.HashPassword(user, viewModel.Password);
+        // // else
+        //     ModelState.AddModelError("", "Password cannot be empty");
 
         if (!string.IsNullOrEmpty(viewModel.Email) && !string.IsNullOrEmpty(viewModel.Password))
         {

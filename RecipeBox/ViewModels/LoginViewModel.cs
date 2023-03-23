@@ -5,8 +5,8 @@ namespace RecipeBox.ViewModels
   public class LoginViewModel
   {
     [Required]
-    [EmailAddress]
-    [Display(Name = "Email Address")]
+    // [EmailAddress]
+    [Display(Name = "Email Address / Name")]
     public string Email { get; set; }
 
     [Required]

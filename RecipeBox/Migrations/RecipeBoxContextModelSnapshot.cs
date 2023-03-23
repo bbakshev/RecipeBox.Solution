@@ -166,7 +166,7 @@ namespace RecipeBox.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("UserName")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")

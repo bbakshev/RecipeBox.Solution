@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
- 
+
 namespace Identity.Controllers
 {
     public class RoleController : Controller
@@ -10,14 +10,13 @@ namespace Identity.Controllers
         {
             roleManager = roleMgr;
         }
- 
+
         public ViewResult Index() => View(roleManager.Roles);
- 
+
         private void Errors(IdentityResult result)
         {
             foreach (IdentityError error in result.Errors)
-                ModelState.AddModelError("", error.Description);
+            ModelState.AddModelError("", error.Description);
         }
     }
 }
-       

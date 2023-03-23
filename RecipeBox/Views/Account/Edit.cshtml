@@ -4,12 +4,12 @@
 
 @model RecipeBox.Models.ApplicationUser
 
-<h2>Edit @Html.DisplayFor(model => model.FirstName)</h2>
+<h2>Edit @Html.DisplayFor(model => model.UserName)</h2>
 
 @using (Html.BeginForm())
 {
   @Html.Label("Updated Name: ")
-  @Html.EditorFor(model => model.FirstName)
+  @Html.EditorFor(model => model.UserName)
   <br><br>
   <input type="submit" value="Save" id="green-button"/>
 }

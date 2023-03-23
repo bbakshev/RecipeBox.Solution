@@ -4,7 +4,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-  <h2>Hello @ViewBag.FirstName!</h2>
+  <h2>Hello @ViewBag.UserName!</h2>
   @using (Html.BeginForm("LogOff", "Account"))
   {
     <input type="submit" id="green-button" value="Log out" />

@@ -27,7 +27,7 @@ namespace RecipeBox.Controllers
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      ViewBag.FirstName = currentUser.FirstName;
+      ViewBag.UserName = currentUser.UserName;
       List<Recipe> userRecipe = _db.Recipes
                           .Where(entry => entry.User.Id == currentUser.Id)
                           .OrderByDescending(recipe => recipe.Rating)

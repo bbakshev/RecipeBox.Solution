@@ -1,0 +1,24 @@
+@using RecipeBox.Models
+@model IEnumerable<ApplicationUser>
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="bg-info text-white">All Users</h1>
+<a asp-action="Create" class="btn btn-secondary">Create a User</a>
+
+<table class="table table-sm table-bordered">
+    <tr><th>ID</th><th>UserName</th><th>Email</th></tr>
+    @foreach (var user in Model)
+    {
+    <tr>
+      <td>@user.Id</td>
+      <td>@user.UserName</td>
+      <td>@user.Email</td>
+      <td>
+        @Html.ActionLink("Update User", "Update", "Admin", new { id = @user.Id })
+      </td>
+    </tr>
+    }
+</table>

@@ -29,7 +29,7 @@ namespace RecipeBox.Controllers
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       if (currentUser != null)
       {
-        ViewBag.FirstName = currentUser.FirstName;
+        ViewBag.UserName = currentUser.UserName;
       }
       return View();
     }
@@ -48,7 +48,7 @@ namespace RecipeBox.Controllers
       }
       else
       {
-        ApplicationUser user = new ApplicationUser { UserName = model.Email, FirstName = model.FirstName };
+        ApplicationUser user = new ApplicationUser { Email = model.Email, UserName = model.UserName };
         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {
@@ -107,11 +107,11 @@ namespace RecipeBox.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Edit(string FirstName)
+    public async Task<ActionResult> Edit(string UserName)
     {
       string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser userToUpdate = await _userManager.FindByIdAsync(userId);
-      userToUpdate.FirstName = FirstName;
+      userToUpdate.UserName = UserName;
       IdentityResult result = await _userManager.UpdateAsync(userToUpdate);
       return RedirectToAction("Index");
     }

@@ -1,0 +1,24 @@
+
+@model RecipeBox.ViewModels.RegisterViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="bg-info text-white">Updating User @Model.UserName</h1>
+<a asp-action="Index" class="btn btn-secondary">Back</a>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@using (Html.BeginForm())
+{
+
+    
+    @Html.LabelFor(model => model.UserName)
+    @Html.EditorFor(model => model.UserName)
+
+    @Html.LabelFor(model => model.Email)
+    @Html.EditorFor(model => model.Email)
+
+    <button id="green-button" type="submit">Update</button>
+
+}

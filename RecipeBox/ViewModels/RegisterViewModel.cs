@@ -11,7 +11,7 @@ namespace RecipeBox.ViewModels
 
     [Required]
     [Display(Name = "First Name")]
-    public string UserName { get; set; }
+    public string FirstName { get; set; }
 
     [Required]
     [DataType(DataType.Password)]
